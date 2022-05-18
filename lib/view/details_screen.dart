@@ -14,7 +14,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.stuModel!.name.toString()),
+          title: Text("Name: "+widget.stuModel!.name.toString()),
         ),
         body: SafeArea(
           child: Column(
@@ -24,25 +24,25 @@ class _DetailsScreenState extends State<DetailsScreen> {
               Container(
                 margin: EdgeInsets.only(left: 20.0),
                 padding: EdgeInsets.all(10),
-                child: Text(widget.stuModel!.name.toString()),
+                child: Text("Name : "+widget.stuModel!.name.toString()),
               ),
 
               Container(
                 margin: EdgeInsets.only(left: 20.0),
                  padding: EdgeInsets.all(10),
-                child: Text(widget.stuModel!.clgname.toString()),
+                child: Text("College Name : "+widget.stuModel!.clgname.toString()),
               ),
 
               Container(
                 margin: EdgeInsets.only(left: 20.0),
                  padding: EdgeInsets.all(10),
-                child: Text(widget.stuModel!.branch.toString()),
+                child: Text("Branch : "+widget.stuModel!.branch.toString()),
               ),
 
               Container(
                 margin: EdgeInsets.only(left: 20.0),
                  padding: EdgeInsets.all(10),
-                child: Text(widget.stuModel!.year.toString()),
+                child: Text("Year : "+widget.stuModel!.year.toString()),
               ),
               
             ],

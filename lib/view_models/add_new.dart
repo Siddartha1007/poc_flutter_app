@@ -4,6 +4,7 @@ import 'package:poc_flutter_app/services/dBase.dart';
 
 
 class AddNew extends ChangeNotifier {
+  
   TextEditingController name = new TextEditingController();
   TextEditingController clgname = new TextEditingController();
   TextEditingController branch = new TextEditingController();

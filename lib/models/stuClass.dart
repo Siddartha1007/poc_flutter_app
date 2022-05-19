@@ -3,7 +3,7 @@ class StuClass {
   String? name;
   String? clgname;
   String? branch;
-  String? year;
+  int? year;
     
   StuClass({ 
     this.id, 

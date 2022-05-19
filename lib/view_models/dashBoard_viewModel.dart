@@ -23,10 +23,11 @@ class DashBoardViewModel extends ChangeNotifier{
     });
     notifyListeners();
   }
-  
+
   Future delete(int? id) async {
     await Dbase.instance.delete(id!);
     stuList.removeWhere((element) => element.id == id);
     notifyListeners();
   }
+
 }

@@ -20,7 +20,7 @@ class AddNew extends ChangeNotifier {
       name: nam,
       clgname: clgnam,
       branch: branc,
-      year: yr,
+      year:  int.parse(yr),
     );
     await Dbase.instance.insert(stuList);
     notifyListeners();

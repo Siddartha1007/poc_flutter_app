@@ -25,7 +25,7 @@ class _DashBoardState extends State<DashBoard> {
     });
 
     return ViewModelBuilder<DashBoardViewModel>.reactive(
-      viewModelBuilder: () => DashBoardViewModel(), 
+      viewModelBuilder: () => DashBoardViewModel(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(title: Text("Dash Board")),
       body: Column(
@@ -73,7 +73,8 @@ class _DashBoardState extends State<DashBoard> {
         },
       )
 
-      )
+      ),
+      onModelReady:(m) => m.refresh()
     );
   }
 }

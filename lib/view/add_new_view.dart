@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:poc_flutter_app/view_models/add_new.dart';
 import 'package:stacked/stacked.dart';
 
@@ -59,6 +60,11 @@ class _AddNewViewState extends State<AddNewView> {
               child: TextFormField(
                 decoration: InputDecoration(hintText: "Enter Year"),
                 controller: model.year,
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  new LengthLimitingTextInputFormatter(4),
+                ],
+                keyboardType: TextInputType.numberWithOptions(),
               ),
             ),
             SizedBox(height: 8),

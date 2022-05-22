@@ -32,17 +32,8 @@ class Dbase{
   }
  
   Future _onCreate(Database db, int version) async {
-    // await db.execute('''
-    //       CREATE TABLE $table (
-    //         $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-    //         $columnName FLOAT NOT NULL
-    //         $columnClgName FLOAT 
-    //         $columnBranch FLOAT 
-    //         $columnYear FLOAT 
-    //       )
-    //       ''');
     await db.execute('CREATE TABLE $table('
-        'id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, clgname STRING, branch STRING, year INTEGER NOT NULL'
+        'id STRING, name STRING, clgname STRING, branch STRING, year INTEGER NOT NULL'
         ')');
   }
  

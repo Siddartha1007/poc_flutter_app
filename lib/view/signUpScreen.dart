@@ -1,50 +1,45 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:poc_flutter_app/models/userModel.dart';
-import 'package:poc_flutter_app/services/dBaseLogin.dart';
+import 'package:poc_flutter_app/services/dBase.dart';
 import 'package:poc_flutter_app/view/dashBoard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:poc_flutter_app/view/login.dart';
+import 'package:poc_flutter_app/view/loginScreen.dart';
 
-
-import '../services/dBaseLogin.dart';
-
-class SignUpForm extends StatefulWidget {
-  const SignUpForm({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignUpForm> createState() => _SignUpFormState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
+class _SignUpScreenState extends State<SignUpScreen> {
 
   final _formKey = new GlobalKey<FormState>();
 
-  final _conUserId = TextEditingController();
+  // final _conUserId = TextEditingController();
   final _conUserName = TextEditingController();
   final _conEmail = TextEditingController();
   final _conPassword = TextEditingController();
-  var dbHelper;
 
-  @override
-  void initState() {
-    super.initState();
-    dbHelper = DbHelper();
-  }
-
-   signUp() async {
-    String uid = _conUserId.text;
+  signUp() async {
+    // String uid = _conUserId.text;
     String uname = _conUserName.text;
-    String email = _conEmail.text;
+    String emai = _conEmail.text;
     String passwd = _conPassword.text;
 
     _formKey.currentState?.save();
 
-    UserModel uModel = UserModel(uid, uname, email, passwd);
-    await dbHelper.saveData(uModel).then((userData) {
+    // final uModel = UserModel(
+    //   user_name:uname, 
+    //   email: emai, 
+    //   password: passwd
+    //   );
+    //   await Dbase.instance.saveData(uModel);
+
+    UserModel uModel = UserModel(uname, email, passwd);
+    await Dbase.instance.saveData(uModel).then((userData) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (_) => LoginForm()));
+          context, MaterialPageRoute(builder: (_) => LoginScreen()));
     });
   }
 
@@ -60,13 +55,7 @@ class _SignUpFormState extends State<SignUpForm> {
         child: Column(
           children: <Widget>[
             SizedBox(height: 20),
-            Container(
-              child: TextFormField(
-                decoration: InputDecoration(hintText: "Enter User Id"),
-                controller: _conUserId,
-              ),
-            ),
-            SizedBox(height: 8),
+          
             Container(
               child: TextFormField(
                 decoration: InputDecoration(hintText: "Enter User Name"),
@@ -104,3 +93,4 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 }
+

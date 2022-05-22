@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:poc_flutter_app/view/dashBoard.dart';
-import 'package:poc_flutter_app/view/login.dart';
+import 'package:poc_flutter_app/view/loginScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginForm(),
+      home: LoginScreen(),
     );
   }
 }

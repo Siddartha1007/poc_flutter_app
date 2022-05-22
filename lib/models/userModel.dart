@@ -8,7 +8,7 @@ class UserModel {
     this.user_id,  
     this.user_name,
     this.email, 
-    this.password
+    this.password, 
   );
 
   Map<String, dynamic> toMap() {

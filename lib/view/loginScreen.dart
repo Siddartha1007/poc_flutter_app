@@ -2,34 +2,26 @@
 
 import 'package:flutter/material.dart';
 import 'package:poc_flutter_app/models/userModel.dart';
-import 'package:poc_flutter_app/services/dBaseLogin.dart';
+import 'package:poc_flutter_app/services/dBase.dart';
 import 'package:poc_flutter_app/view/dashBoard.dart';
-import 'package:poc_flutter_app/view/signup.dart';
+import 'package:poc_flutter_app/view/signUpScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stacked/stacked.dart';
 
-import '../services/dBaseLogin.dart';
-
-class LoginForm extends StatefulWidget {
-  const LoginForm({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginScreenState extends State<LoginScreen> {
 
   Future<SharedPreferences> _pref = SharedPreferences.getInstance();
   final _formKey = new GlobalKey<FormState>();
 
   final _conUserName = TextEditingController();
   final _conPassword = TextEditingController();
-  var dbHelper;
-
-  @override
-  void initState() {
-    super.initState();
-    dbHelper = DbHelper();
-  }
 
   login() async {
     String uname = _conUserName.text;
@@ -39,7 +31,7 @@ class _LoginFormState extends State<LoginForm> {
     } else if (passwd.isEmpty) {
       AlertDialog(title: Text("Please Enter Password"));
     } else {
-      await dbHelper.getLoginUser(uname, passwd).then((userData) {
+      await Dbase.instance.getLoginUser(uname, passwd).then((userData) {
       if (userData != null) {
         setSP(userData).whenComplete(() {
           Navigator.pushAndRemoveUntil(
@@ -69,7 +61,7 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       appBar: AppBar(
         title: Text('Login Form'),
       ),
@@ -112,7 +104,7 @@ class _LoginFormState extends State<LoginForm> {
                         child: Text('Signup'),
                         onPressed: () {
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => SignUpForm()));
+                              MaterialPageRoute(builder: (_) => SignUpScreen()));
                         },
                       )
                     ],

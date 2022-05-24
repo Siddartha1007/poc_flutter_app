@@ -2,7 +2,7 @@ class UserModel {
   String? user_id;
   String? user_name;
   String? email;
-  String? password;
+  String? password; 
 
   UserModel(
     this.user_id,  
